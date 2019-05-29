@@ -28,7 +28,7 @@ public class JmsConfig {
 	
 	@Bean("jmsConnectionFactory")
 	JmsConnectionFactory jmsConnectionFactory() {
-		 return new JmsConnectionFactory("amquser", "amqpass", "amqp://broker-amqp-amq:5672");
+		 return new JmsConnectionFactory("amquser", "amqpass", "amqp://broker-amqp-amq-amqp:5672");
 	}
 	
 	@Bean("jmsCachingConnectionFactory")
