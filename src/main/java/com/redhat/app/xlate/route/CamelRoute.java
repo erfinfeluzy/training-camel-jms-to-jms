@@ -19,11 +19,18 @@ public class CamelRoute extends RouteBuilder {
 			.maximumRedeliveries(3)
 			.to("jms:queue:q.empi.transform.dlq");
 		
-		from("jms:queue:q.input")
-			.log("received message on: jms:queue:q.email")
-			.convertBodyTo(String.class)
-			.log("send message to: jms:queue:q.output")
-			.to("jms:queue:q.output");
+//		from("amqp:queue:q.output")
+//			.log("received message on: amqp:queue:q.output \n ${body}");
+//			.convertBodyTo(String.class)
+//			.log("send message to: amqp:queue:q.output")
+//			.to("jms:queue:q.output");
+//			.to("amqp:queue:q.output");
+		
+		from("timer:foo?fixedRate=true&period=1")
+			.log("timer on ${header.firedTime}")
+			.setBody(simple("Hello from timer at ${header.firedTime}"))
+			.to("amqp:queue:q.output");
+		
 		
 		
 	}
