@@ -1,0 +1,4 @@
+com/redhat/app/xlate/config/CamelConfig.class
+com/redhat/app/xlate/route/CamelRoute.class
+com/redhat/app/xlate/config/JmsConfig.class
+com/redhat/app/xlate/Application.class
