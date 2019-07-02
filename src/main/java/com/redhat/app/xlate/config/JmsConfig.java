@@ -11,45 +11,34 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.connection.CachingConnectionFactory;
 
 @Configuration
-//@EnableJms
+@EnableJms
 public class JmsConfig {
 
 	
-	/** AMQP config **/
-//	@Bean
-//	AMQPConnectionDetails amqpConnection() {
-//	  return new AMQPConnectionDetails("amqp://10.7.48.66:32164"); 
-//	}
-//	 
-//	@Bean
-//	AMQPConnectionDetails securedAmqpConnection() {
-//	  return new AMQPConnectionDetails("amqp://10.7.48.66:32164", "amquser", "amqpass"); 
-//	}
+// 	@Bean("jmsConnectionFactory")
+// 	JmsConnectionFactory jmsConnectionFactory() {
+// 		 return new JmsConnectionFactory("amquser", "amqpass", "amqp://broker-amqp-amq-amqp:5672");
+// 	}
 	
-	@Bean("jmsConnectionFactory")
-	JmsConnectionFactory jmsConnectionFactory() {
-		 return new JmsConnectionFactory("amquser", "amqpass", "amqp://broker-amqp-amq-amqp:5672");
-	}
+// 	@Bean("jmsCachingConnectionFactory")
+// 	@Primary
+// 	CachingConnectionFactory jmsCachingConnectionFactory() {
+// 		return new CachingConnectionFactory(jmsConnectionFactory());
+// 	}
 	
-	@Bean("jmsCachingConnectionFactory")
-	@Primary
-	CachingConnectionFactory jmsCachingConnectionFactory() {
-		return new CachingConnectionFactory(jmsConnectionFactory());
-	}
-	
-	@Bean
-	JmsConfiguration jmsConfiguration() {
+// 	@Bean
+// 	JmsConfiguration jmsConfiguration() {
 		
-		JmsConfiguration result = new JmsConfiguration(jmsCachingConnectionFactory());
-		result.setCacheLevelName("CACHE_CONSUMER");
-		return result;
+// 		JmsConfiguration result = new JmsConfiguration(jmsCachingConnectionFactory());
+// 		result.setCacheLevelName("CACHE_CONSUMER");
+// 		return result;
 				
-	}
+// 	}
 	
-	@Bean
-	AMQPComponent amqp() {
-		return new AMQPComponent(jmsConfiguration());
-	}
+// 	@Bean
+// 	AMQPComponent amqp() {
+// 		return new AMQPComponent(jmsConfiguration());
+// 	}
 
 	
 
