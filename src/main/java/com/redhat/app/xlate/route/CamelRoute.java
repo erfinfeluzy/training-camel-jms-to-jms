@@ -26,10 +26,10 @@ public class CamelRoute extends RouteBuilder {
 //			.to("jms:queue:q.output");
 //			.to("amqp:queue:q.output");
 		
-		from("timer:foo?fixedRate=true&period=1")
+		from("timer:foo?fixedRate=true&period=1000")
 			.log("timer on ${header.firedTime}")
 			.setBody(simple("Hello from timer at ${header.firedTime}"))
-			.to("amqp:queue:q.output");
+			.to("jms:queue:q.output");
 		
 		
 		
